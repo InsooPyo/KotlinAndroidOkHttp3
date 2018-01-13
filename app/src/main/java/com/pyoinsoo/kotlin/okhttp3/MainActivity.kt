@@ -180,7 +180,14 @@ class MainActivity : AppCompatActivity() {
      * 18시 이후엔 자외선 정보가 기본값인 0으로 넘어온다
      */
     private fun setUIUvindex(data: CurrentWeather) {
-        val pair = WeatherUtil.getUvrayMessage(data.weather.wIndex?.uvindex!!.get(0).day00.index)
+        var uvValue = data.weather.wIndex?.uvindex!!.get(0).day00.index
+        /*
+         * 18시 이후엔 json값이 empty가 된다
+         */
+        if(uvValue.isNullOrEmpty()){
+            uvValue = "0"
+        }
+        val pair = WeatherUtil.getUvrayMessage(uvValue)
         uvCircular.progressValue = pair.first!!.toFloat()
         tvUvStateMessage.text = pair.second
     }

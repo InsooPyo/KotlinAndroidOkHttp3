@@ -107,7 +107,7 @@ class WeatherUtil {
          * 121~200: 나쁨, 201~300: 매우나쁨
          * 오후 6시 이후 자외선 값은 0 이다
          */
-        fun getUvrayMessage(jsonValue:String = "0"): Pair<Int,String> {
+        fun getUvrayMessage(jsonValue:String): Pair<Int,String> {
 
             //원의  값을 설정하기 위함(원의 값은 0~100)
             var changedValue:Int
